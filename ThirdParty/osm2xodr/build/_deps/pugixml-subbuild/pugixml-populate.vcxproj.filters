@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\2a74cc2a063deaae6cbb974cffeb9f1d\pugixml-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\55af7b6720d881010734e6335ac58a0c\pugixml-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\460381953c6e5ce25ea7e15b91a5d587\pugixml-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\pugixml-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1DD7C57A-5145-3058-B696-68AE1E85E414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

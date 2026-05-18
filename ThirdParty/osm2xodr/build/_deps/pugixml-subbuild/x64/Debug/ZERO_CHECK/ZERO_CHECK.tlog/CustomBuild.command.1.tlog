@@ -1,0 +1,10 @@
+^C:\USERS\BLYRO\DOCUMENTS\OSM2MAP\THIRDPARTY\OSM2XODR\BUILD\_DEPS\PUGIXML-SUBBUILD\CMAKEFILES\460381953C6E5CE25EA7E15B91A5D587\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild -BC:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/pugixml-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

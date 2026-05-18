@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmake --build build --config Release)",
+      "Bash(cmake -B build -DCMAKE_BUILD_TYPE=Release)",
+      "Bash(ls c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/*.osm c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/*.xodr)",
+      "Bash(./build/Release/osm2xodr.exe vitoria.osm vitoria.xodr)",
+      "Bash(c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/Release/osm2xodr.exe c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.osm c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.xodr)",
+      "Bash(cmake -B build -DCMAKE_BUILD_TYPE=Release c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr)",
+      "Bash(cmake --build build --config Release --target check_topo)",
+      "Bash(c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/Release/check_topo.exe c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.xodr)",
+      "Bash(cmake --build build --config Release --target osm2xodr)",
+      "Bash(chmod +x c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/Release/osm2xodr.exe)",
+      "Bash(cmd.exe /c \"c:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\build\\\\Release\\\\osm2xodr.exe c:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\vitoria.osm c:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\vitoria.xodr\")",
+      "Bash(cmd.exe /c \"c:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\build\\\\Release\\\\osm2xodr.exe\" \"c:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\vitoria.osm\" \"c:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\vitoria.xodr\")",
+      "Bash(\"/c/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/Release/osm2xodr.exe\" \"/c/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.osm\" \"/c/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.xodr\")",
+      "Bash(cp c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/Release/osm2xodr.exe /tmp/osm2xodr.exe)",
+      "Bash(/tmp/osm2xodr.exe c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.osm c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.xodr)",
+      "Bash(start c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/Release/osm2xodr.exe c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.osm c:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/vitoria.xodr)",
+      "Bash(powershell.exe -Command \"& 'C:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\build\\\\Release\\\\osm2xodr.exe' 'C:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\vitoria.osm' 'C:\\\\Users\\\\blyro\\\\Documents\\\\Osm2Map\\\\ThirdParty\\\\osm2xodr\\\\vitoria.xodr'\")"
+    ]
+  }
+}

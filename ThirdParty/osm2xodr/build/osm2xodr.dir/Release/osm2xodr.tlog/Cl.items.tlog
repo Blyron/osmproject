@@ -1,0 +1,7 @@
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\main.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\main.obj
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\osm\OsmParser.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\OsmParser.obj
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\osm\OsmFilter.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\OsmFilter.obj
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\conversion\Projection.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\Projection.obj
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\conversion\GeomUtils.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\GeomUtils.obj
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\conversion\RoadNetwork.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\RoadNetwork.obj
+C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\src\xodr\XodrWriter.cpp;C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\osm2xodr.dir\Release\XodrWriter.obj

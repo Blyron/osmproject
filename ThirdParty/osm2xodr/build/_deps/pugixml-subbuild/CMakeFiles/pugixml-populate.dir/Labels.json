@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/pugixml-populate"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/460381953c6e5ce25ea7e15b91a5d587/pugixml-populate.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/55af7b6720d881010734e6335ac58a0c/pugixml-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pugixml-populate"
+		],
+		"name" : "pugixml-populate"
+	}
+}

@@ -1,0 +1,14 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CTest.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CTestTargets.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CTestUseLaunchers.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/DartConfiguration.tcl.in
+C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/WriteBasicConfigVersionFile.cmake
+C:/Program Files/CMake/share/cmake-4.2/Templates/CTestScript.cmake.in
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-src/CMakeLists.txt
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-src/scripts/pugixml-config.cmake.in
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-src/scripts/pugixml.pc.in

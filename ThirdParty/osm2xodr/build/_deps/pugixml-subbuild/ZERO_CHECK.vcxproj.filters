@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\build\_deps\pugixml-subbuild\CMakeFiles\460381953c6e5ce25ea7e15b91a5d587\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1DD7C57A-5145-3058-B696-68AE1E85E414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

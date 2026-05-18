@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\check_topo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\blyro\Documents\Osm2Map\ThirdParty\osm2xodr\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{251F8B53-1348-3253-9D9A-FC4D8ECFA03E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

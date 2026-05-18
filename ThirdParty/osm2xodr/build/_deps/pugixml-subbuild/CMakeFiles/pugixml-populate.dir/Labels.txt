@@ -1,0 +1,14 @@
+# Target labels
+ pugixml-populate
+# Source files and their labels
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/pugixml-populate
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/460381953c6e5ce25ea7e15b91a5d587/pugixml-populate.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/55af7b6720d881010734e6335ac58a0c/pugixml-populate-complete.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-build.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-configure.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-download.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-install.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-mkdir.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-patch.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-test.rule
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-subbuild/CMakeFiles/2a74cc2a063deaae6cbb974cffeb9f1d/pugixml-populate-update.rule

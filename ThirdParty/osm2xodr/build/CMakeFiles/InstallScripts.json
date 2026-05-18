@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/cmake_install.cmake",
+		"C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

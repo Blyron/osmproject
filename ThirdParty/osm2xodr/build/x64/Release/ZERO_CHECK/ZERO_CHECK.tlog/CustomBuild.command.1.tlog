@@ -1,0 +1,10 @@
+^C:\USERS\BLYRO\DOCUMENTS\OSM2MAP\THIRDPARTY\OSM2XODR\BUILD\CMAKEFILES\6A6883D615C20BE52830A94BF889CA5F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr -BC:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/osm2xodr.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

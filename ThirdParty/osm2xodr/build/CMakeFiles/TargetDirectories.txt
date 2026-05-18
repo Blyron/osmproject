@@ -1,0 +1,11 @@
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/CMakeFiles/osm2xodr.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/CMakeFiles/INSTALL.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/Experimental.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/Nightly.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/Continuous.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/pugixml-static.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/INSTALL.dir
+C:/Users/blyro/Documents/Osm2Map/ThirdParty/osm2xodr/build/_deps/pugixml-build/CMakeFiles/ALL_BUILD.dir
