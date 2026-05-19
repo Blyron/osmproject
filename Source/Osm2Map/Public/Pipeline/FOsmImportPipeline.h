@@ -22,6 +22,10 @@ class OSM2MAP_API UOsmImportPipeline : public UObject
 	GENERATED_BODY()
 
 public:
+	/** Create a new import pipeline instance for Blueprint or Python-driven workflows */
+	UFUNCTION(BlueprintCallable, Category = "Osm2Map")
+	static UOsmImportPipeline* NewPipeline();
+
 	/** Execute the full import pipeline in the given world */
 	UFUNCTION(BlueprintCallable, Category = "Osm2Map")
 	bool Execute(UWorld* World, const FOsmImportSettings& Settings);

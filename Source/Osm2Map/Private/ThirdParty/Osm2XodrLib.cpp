@@ -26,8 +26,6 @@
 #endif
 
 // PugiXML
-#include "pugixml.cpp"
-
 // OSM parsing
 #include "osm/OsmParser.cpp"
 #include "osm/OsmFilter.cpp"

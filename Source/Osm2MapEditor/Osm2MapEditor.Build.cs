@@ -9,7 +9,9 @@ public class Osm2MapEditor : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[] {
 			"Core",
 			"CoreUObject",
+			"Blutility",
 			"Engine",
+			"UMG",
 			"Osm2Map"
 		});
 
@@ -25,7 +27,12 @@ public class Osm2MapEditor : ModuleRules
 			"ToolMenus",
 			"EditorFramework",
 			"DesktopPlatform",
-			"AppFramework"
+			"AppFramework",
+			"AssetTools",
+			"AssetRegistry",
+			"ProceduralMeshComponentEditor",
+			"MeshDescription",
+			"StaticMeshDescription"
 		});
 	}
 }

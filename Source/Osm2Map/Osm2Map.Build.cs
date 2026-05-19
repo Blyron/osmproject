@@ -12,6 +12,8 @@ public class Osm2Map : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
+			"Json",
+			"JsonUtilities",
 			"InputCore",
 			"ProceduralMeshComponent",
 			"Landscape",
@@ -31,7 +33,8 @@ public class Osm2Map : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[] {
 			"Slate",
-			"SlateCore"
+			"SlateCore",
+			"pugixml"
 		});
 
 		// --- ThirdParty: osm2xodr + pugixml ---
@@ -39,8 +42,6 @@ public class Osm2Map : ModuleRules
 		// Project root = Source/Osm2Map/../../ = project root
 		string ProjectRoot = Path.GetFullPath(Path.Combine(ModuleDirectory, "..", ".."));
 		string Osm2XodrSrc = Path.Combine(ProjectRoot, "ThirdParty", "osm2xodr", "src");
-		string PugixmlSrc  = Path.Combine(ProjectRoot, "ThirdParty", "osm2xodr", "build", "_deps", "pugixml-src", "src");
-
 		// Log for debugging (visible in UBT output)
 		System.Console.WriteLine("Osm2Map: Osm2XodrSrc = " + Osm2XodrSrc);
 		System.Console.WriteLine("Osm2Map: Exists = " + Directory.Exists(Osm2XodrSrc));
@@ -49,8 +50,7 @@ public class Osm2Map : ModuleRules
 			Osm2XodrSrc,
 			Path.Combine(Osm2XodrSrc, "osm"),
 			Path.Combine(Osm2XodrSrc, "conversion"),
-			Path.Combine(Osm2XodrSrc, "xodr"),
-			PugixmlSrc
+			Path.Combine(Osm2XodrSrc, "xodr")
 		});
 
 		PrivateDefinitions.Add("PUGIXML_NO_XPATH");

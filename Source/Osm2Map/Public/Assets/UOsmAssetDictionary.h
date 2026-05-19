@@ -68,6 +68,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset Dictionary")
 	TArray<FOsmAssetMappingRule> Rules;
 
+	/** Export the current mapping rules to a JSON file for external editing. */
+	UFUNCTION(BlueprintCallable, Category = "Asset Dictionary")
+	bool ExportToJson(const FString& FilePath) const;
+
+	/** Import mapping rules from a JSON file. Existing rules are replaced on success. */
+	UFUNCTION(BlueprintCallable, Category = "Asset Dictionary")
+	bool ImportFromJson(const FString& FilePath);
+
 	/**
 	 * Find the best matching rule for a set of OSM tags.
 	 * @return Index into Rules array, or INDEX_NONE if no match.

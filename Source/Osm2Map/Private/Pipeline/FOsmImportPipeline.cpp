@@ -10,8 +10,30 @@
 #include "conversion/Projection.h"
 #include "conversion/RoadNetwork.h"
 #include "Misc/ScopedSlowTask.h"
+#include "UObject/Package.h"
+
+#include <cmath>
 
 DEFINE_LOG_CATEGORY(LogOsm2Map);
+
+namespace
+{
+	constexpr double EarthRadiusMeters = 6371000.0;
+	constexpr double DegToRad = 3.14159265358979323846 / 180.0;
+
+	XY ProjectOsmLatLon(double RefLat, double RefLon, double CosLat, double Lat, double Lon)
+	{
+		XY Pos;
+		Pos.x = (Lon - RefLon) * CosLat * EarthRadiusMeters * DegToRad;
+		Pos.y = (Lat - RefLat) * EarthRadiusMeters * DegToRad;
+		return Pos;
+	}
+}
+
+UOsmImportPipeline* UOsmImportPipeline::NewPipeline()
+{
+	return NewObject<UOsmImportPipeline>(GetTransientPackage());
+}
 
 bool UOsmImportPipeline::Execute(UWorld* World, const FOsmImportSettings& Settings)
 {
@@ -134,17 +156,19 @@ bool UOsmImportPipeline::ProjectCoordinates(float WorldScale)
 {
 	CoordConverter = FOsmCoordinateConverter(WorldScale);
 
-	::Projection Proj(RawData.MinLat, RawData.MaxLat, RawData.MinLon, RawData.MaxLon);
+	const double RefLat = (RawData.MinLat + RawData.MaxLat) * 0.5;
+	const double RefLon = (RawData.MinLon + RawData.MaxLon) * 0.5;
+	const double CosLat = std::cos(RefLat * DegToRad);
 
 	ProjectedNodes.Reserve(RawData.Nodes.Num());
 	for (const auto& [Id, Node] : RawData.Nodes)
 	{
-		XY Pos = Proj.project(Node.Lat, Node.Lon);
+		XY Pos = ProjectOsmLatLon(RefLat, RefLon, CosLat, Node.Lat, Node.Lon);
 		ProjectedNodes.Add(Id, FVector2D(Pos.x, Pos.y));
 	}
 
-	XY MinCorner = Proj.project(RawData.MinLat, RawData.MinLon);
-	XY MaxCorner = Proj.project(RawData.MaxLat, RawData.MaxLon);
+	XY MinCorner = ProjectOsmLatLon(RefLat, RefLon, CosLat, RawData.MinLat, RawData.MinLon);
+	XY MaxCorner = ProjectOsmLatLon(RefLat, RefLon, CosLat, RawData.MaxLat, RawData.MaxLon);
 	double WidthM = MaxCorner.x - MinCorner.x;
 	double HeightM = MaxCorner.y - MinCorner.y;
 

@@ -61,10 +61,12 @@ AActor* UOsm2MapBuildingGenerator::GenerateBuilding(
 	USceneComponent* Root = NewObject<USceneComponent>(BuildingActor, TEXT("Root"));
 	BuildingActor->SetRootComponent(Root);
 	Root->RegisterComponent();
+	BuildingActor->AddInstanceComponent(Root);
 
 	UProceduralMeshComponent* MeshComp = NewObject<UProceduralMeshComponent>(BuildingActor, TEXT("BuildingMesh"));
 	MeshComp->SetupAttachment(Root);
 	MeshComp->RegisterComponent();
+	BuildingActor->AddInstanceComponent(MeshComp);
 
 	if (Footprint.bIsComplex)
 	{
@@ -120,6 +122,8 @@ AActor* UOsm2MapBuildingGenerator::GenerateBuilding(
 		}
 	}
 
+	BuildingActor->Tags.Add(FName("Osm2Map_Building"));
+
 #if WITH_EDITOR
 	BuildingActor->SetActorLabel(FString::Printf(TEXT("Building_%s_%lld"), *Footprint.BuildingType, Footprint.OsmId));
 #endif
@@ -165,14 +169,14 @@ void UOsm2MapBuildingGenerator::GenerateWalls(
 		OutVertices.Add(TL); OutNormals.Add(Normal); OutUVs.Add(FVector2D(CumulativeU / 100.0f, 1.0f));
 		OutVertices.Add(TR); OutNormals.Add(Normal); OutUVs.Add(FVector2D(UEnd / 100.0f, 1.0f));
 
-		// Two triangles for the quad
+		// Two triangles for the quad (CCW winding = front face from exterior)
 		OutTriangles.Add(BaseIdx + 0);
-		OutTriangles.Add(BaseIdx + 2);
 		OutTriangles.Add(BaseIdx + 1);
+		OutTriangles.Add(BaseIdx + 2);
 
 		OutTriangles.Add(BaseIdx + 1);
-		OutTriangles.Add(BaseIdx + 2);
 		OutTriangles.Add(BaseIdx + 3);
+		OutTriangles.Add(BaseIdx + 2);
 
 		CumulativeU = UEnd;
 	}
@@ -209,7 +213,7 @@ void UOsm2MapBuildingGenerator::GenerateWallsSeparateSections(
 			FVector2D(0.0f, 1.0f),
 			FVector2D(EdgeLen / 100.0f, 1.0f)
 		};
-		TArray<int32> Tris = { 0, 2, 1, 1, 2, 3 };
+		TArray<int32> Tris = { 0, 1, 2, 1, 3, 2 };
 
 		MeshComp->CreateMeshSection(i, Verts, Tris, Normals, UVs, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
 	}

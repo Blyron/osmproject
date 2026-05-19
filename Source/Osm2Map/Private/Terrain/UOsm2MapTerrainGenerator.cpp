@@ -1,10 +1,12 @@
 #include "Terrain/UOsm2MapTerrainGenerator.h"
 #include "Engine/World.h"
+#include "ProceduralMeshComponent.h"
 
 #if WITH_EDITOR
 #include "Landscape.h"
 #include "LandscapeProxy.h"
 #include "LandscapeInfo.h"
+#include "LandscapeEdit.h"
 #include "LandscapeEditorModule.h"
 #endif
 
@@ -127,26 +129,61 @@ ALandscape* UOsm2MapTerrainGenerator::Generate(
 
 	Landscape->SetActorScale3D(LandscapeScale);
 
-	// Import heightmap via the Landscape API
-	// UE 5.6 expects TMap<FGuid, TArray<uint16>> for height data
-	FGuid HeightLayerGuid = FGuid::NewGuid();
-	TMap<FGuid, TArray<uint16>> HeightDataPerLayer;
-	HeightDataPerLayer.Add(HeightLayerGuid, MoveTemp(Heightmap));
+	UE_LOG(LogOsmTerrain, Log, TEXT("Landscape actor created: %dx%d at scale (%.2f, %.2f, %.2f)"),
+		AdjustedResolution, AdjustedResolution,
+		LandscapeScale.X, LandscapeScale.Y, LandscapeScale.Z);
 
-	TMap<FGuid, TArray<FLandscapeImportLayerInfo>> MaterialLayerDataPerLayer;
+	// When no elevation data is available, generate a flat procedural mesh ground plane
+	// covering the full OSM area so roads and buildings have visible terrain beneath them.
+	if (!bHasElevation)
+	{
+		FActorSpawnParameters FlatSpawnParams;
+		FlatSpawnParams.Name = FName(TEXT("OsmFlatTerrain"));
+		AActor* FlatActor = World->SpawnActor<AActor>(FVector::ZeroVector, FRotator::ZeroRotator, FlatSpawnParams);
+		if (FlatActor)
+		{
+			USceneComponent* FlatRoot = NewObject<USceneComponent>(FlatActor, TEXT("Root"));
+			FlatActor->SetRootComponent(FlatRoot);
+			FlatRoot->RegisterComponent();
+			FlatActor->AddInstanceComponent(FlatRoot);
 
-	Landscape->Import(
-		FGuid::NewGuid(),
-		0, 0,
-		AdjustedResolution - 1, AdjustedResolution - 1,
-		SectionsPerComponent, QuadsPerSection,
-		HeightDataPerLayer,
-		nullptr,
-		MaterialLayerDataPerLayer,
-		ELandscapeImportAlphamapType::Additive
-	);
+			UProceduralMeshComponent* FlatMesh = NewObject<UProceduralMeshComponent>(FlatActor, TEXT("FlatTerrain"));
+			FlatMesh->SetupAttachment(FlatRoot);
+			FlatMesh->RegisterComponent();
+			FlatActor->AddInstanceComponent(FlatMesh);
 
-	UE_LOG(LogOsmTerrain, Log, TEXT("Landscape created successfully: %dx%d components"), NumComponentsX, NumComponentsY);
+			// Four corners: SW(0), SE(1), NE(2), NW(3)
+			TArray<FVector> FlatVerts;
+			FlatVerts.Add(CoordConverter.OsmToUE(MinOsmX, MinOsmY, 0.0)); // SW
+			FlatVerts.Add(CoordConverter.OsmToUE(MaxOsmX, MinOsmY, 0.0)); // SE
+			FlatVerts.Add(CoordConverter.OsmToUE(MaxOsmX, MaxOsmY, 0.0)); // NE
+			FlatVerts.Add(CoordConverter.OsmToUE(MinOsmX, MaxOsmY, 0.0)); // NW
+
+			// Winding {0,2,1} and {0,3,2} gives +Z geometric normal (verified via cross product)
+			TArray<int32> FlatTris = { 0, 2, 1,  0, 3, 2 };
+
+			TArray<FVector> FlatNormals = {
+				FVector::UpVector, FVector::UpVector, FVector::UpVector, FVector::UpVector
+			};
+			TArray<FVector2D> FlatUVs = {
+				FVector2D(0.0f, 0.0f),
+				FVector2D(1.0f, 0.0f),
+				FVector2D(1.0f, 1.0f),
+				FVector2D(0.0f, 1.0f)
+			};
+
+			FlatMesh->CreateMeshSection(0, FlatVerts, FlatTris, FlatNormals, FlatUVs,
+				TArray<FColor>(), TArray<FProcMeshTangent>(), true);
+
+			FlatActor->Tags.Add(FName("Osm2Map_Terrain"));
+
+#if WITH_EDITOR
+			FlatActor->SetActorLabel(TEXT("OsmFlatTerrain"));
+#endif
+			UE_LOG(LogOsmTerrain, Log, TEXT("Created flat terrain ground plane (%.0fm x %.0fm)"),
+				WorldWidthM, WorldHeightM);
+		}
+	}
 
 	return Landscape;
 #endif // WITH_EDITOR

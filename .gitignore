@@ -52,6 +52,7 @@ Plugins/**/Binaries/*
 
 # Builds
 Build/*
+build/*
 
 # Whitelist PakBlacklist-<BuildConfiguration>.txt files
 !Build/*/
@@ -73,3 +74,6 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Third-party generated build outputs
+ThirdParty/osm2xodr/build/*

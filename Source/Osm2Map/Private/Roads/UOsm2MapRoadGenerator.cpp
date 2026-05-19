@@ -12,7 +12,35 @@
 #include "conversion/RoadNetwork.h"
 #include "xodr/XodrTypes.h"
 
+#include <cmath>
+
 DEFINE_LOG_CATEGORY_STATIC(LogRoadGen, Log, All);
+
+namespace
+{
+	constexpr double EarthRadiusMeters = 6371000.0;
+	constexpr double DegToRad = 3.14159265358979323846 / 180.0;
+
+	NodeXYMap BuildProjectedNodeMap(const OsmData& NativeData)
+	{
+		const double RefLat = (NativeData.minLat + NativeData.maxLat) * 0.5;
+		const double RefLon = (NativeData.minLon + NativeData.maxLon) * 0.5;
+		const double CosLat = std::cos(RefLat * DegToRad);
+
+		NodeXYMap NodePositions;
+		NodePositions.reserve(NativeData.nodes.size());
+		for (const auto& Pair : NativeData.nodes)
+		{
+			const OsmNode& Node = Pair.second;
+			XY Pos;
+			Pos.x = (Node.lon - RefLon) * CosLat * EarthRadiusMeters * DegToRad;
+			Pos.y = (Node.lat - RefLat) * EarthRadiusMeters * DegToRad;
+			NodePositions.emplace(Pair.first, Pos);
+		}
+
+		return NodePositions;
+	}
+}
 
 void UOsm2MapRoadGenerator::Generate(
 	UWorld* World,
@@ -31,8 +59,7 @@ void UOsm2MapRoadGenerator::Generate(
 	Filter.apply(NativeData);
 
 	// Project coordinates
-	::Projection Proj(NativeData.minLat, NativeData.maxLat, NativeData.minLon, NativeData.maxLon);
-	NodeXYMap NodePositions = Proj.projectAll(NativeData.nodes);
+	NodeXYMap NodePositions = BuildProjectedNodeMap(NativeData);
 
 	// Build road network with lane information
 	::RoadNetwork Builder;
@@ -205,10 +232,12 @@ AActor* UOsm2MapRoadGenerator::GenerateRoadMesh(
 	USceneComponent* Root = NewObject<USceneComponent>(RoadActor, TEXT("Root"));
 	RoadActor->SetRootComponent(Root);
 	Root->RegisterComponent();
+	RoadActor->AddInstanceComponent(Root);
 
 	UProceduralMeshComponent* MeshComp = NewObject<UProceduralMeshComponent>(RoadActor, TEXT("RoadMesh"));
 	MeshComp->SetupAttachment(Root);
 	MeshComp->RegisterComponent();
+	RoadActor->AddInstanceComponent(MeshComp);
 
 	// Build mesh geometry
 	// For each sample point, compute all lane edge positions
@@ -323,6 +352,8 @@ AActor* UOsm2MapRoadGenerator::GenerateRoadMesh(
 		MeshComp->CreateMeshSection(0, Vertices, Triangles, Normals, UVs, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
 	}
 
+	RoadActor->Tags.Add(FName("Osm2Map_Road"));
+
 #if WITH_EDITOR
 	FString RoadName = Road.name.empty() ? FString::Printf(TEXT("Road_%d"), Road.id) : FString(UTF8_TO_TCHAR(Road.name.c_str()));
 	RoadActor->SetActorLabel(RoadName);
@@ -431,10 +462,12 @@ AActor* UOsm2MapRoadGenerator::GenerateJunctionMesh(
 	USceneComponent* Root = NewObject<USceneComponent>(JunctionActor, TEXT("Root"));
 	JunctionActor->SetRootComponent(Root);
 	Root->RegisterComponent();
+	JunctionActor->AddInstanceComponent(Root);
 
 	UProceduralMeshComponent* MeshComp = NewObject<UProceduralMeshComponent>(JunctionActor, TEXT("JunctionMesh"));
 	MeshComp->SetupAttachment(Root);
 	MeshComp->RegisterComponent();
+	JunctionActor->AddInstanceComponent(MeshComp);
 
 	TArray<FVector> Vertices;
 	TArray<int32> Triangles;
@@ -456,16 +489,20 @@ AActor* UOsm2MapRoadGenerator::GenerateJunctionMesh(
 		MeshUVs.Add(UV);
 	}
 
-	// Fan triangles
+	// Fan triangles (CCW winding = front face from above, +Z normal)
+	// EdgePoints sorted CCW in OSM space maps to CCW in UE top-down view,
+	// so fan order (center, Next, Current) gives correct +Z facing face.
 	for (int32 i = 0; i < EdgePoints.Num(); ++i)
 	{
 		int32 Next = (i + 1) % EdgePoints.Num();
 		Triangles.Add(0);         // Center
+		Triangles.Add(Next + 1);  // Next edge (swapped for correct winding)
 		Triangles.Add(i + 1);     // Current edge
-		Triangles.Add(Next + 1);  // Next edge
 	}
 
 	MeshComp->CreateMeshSection(0, Vertices, Triangles, MeshNormals, MeshUVs, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
+
+	JunctionActor->Tags.Add(FName("Osm2Map_Junction"));
 
 #if WITH_EDITOR
 	JunctionActor->SetActorLabel(FString::Printf(TEXT("Junction_%d"), Junction.id));
