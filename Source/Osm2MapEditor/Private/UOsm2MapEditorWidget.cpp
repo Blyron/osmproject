@@ -123,7 +123,9 @@ namespace
 		UE_LOG(LogOsm2MapEditor, Log, TEXT("Saved static mesh '%s' (%d verts, %d tris)"),
 			*FullPackageName, AllVerts.Num(), AllTris.Num() / 3);
 	}
-}(const FOsmImportSettings& InSettings)
+}
+
+bool UOsm2MapEditorWidget::RunImport(const FOsmImportSettings& InSettings)
 {
 	UWorld* EditorWorld = GEditor ? GEditor->GetEditorWorldContext().World() : nullptr;
 	if (!EditorWorld)

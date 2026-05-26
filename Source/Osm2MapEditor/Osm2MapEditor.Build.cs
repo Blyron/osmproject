@@ -30,6 +30,7 @@ public class Osm2MapEditor : ModuleRules
 			"AppFramework",
 			"AssetTools",
 			"AssetRegistry",
+			"ProceduralMeshComponent",
 			"ProceduralMeshComponentEditor",
 			"MeshDescription",
 			"StaticMeshDescription"

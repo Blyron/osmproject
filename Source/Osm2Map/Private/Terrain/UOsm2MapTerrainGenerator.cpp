@@ -160,7 +160,7 @@ ALandscape* UOsm2MapTerrainGenerator::Generate(
 			FlatVerts.Add(CoordConverter.OsmToUE(MinOsmX, MaxOsmY, 0.0)); // NW
 
 			// Winding {0,2,1} and {0,3,2} gives +Z geometric normal (verified via cross product)
-			TArray<int32> FlatTris = { 0, 2, 1,  0, 3, 2 };
+			TArray<int32> FlatTris = { 0, 1, 2,  0, 2, 3 };
 
 			TArray<FVector> FlatNormals = {
 				FVector::UpVector, FVector::UpVector, FVector::UpVector, FVector::UpVector
@@ -174,6 +174,13 @@ ALandscape* UOsm2MapTerrainGenerator::Generate(
 
 			FlatMesh->CreateMeshSection(0, FlatVerts, FlatTris, FlatNormals, FlatUVs,
 				TArray<FColor>(), TArray<FProcMeshTangent>(), true);
+
+			// Assign green material
+			if (UMaterialInterface* Mat = LoadObject<UMaterialInterface>(
+				nullptr, TEXT("/Game/Materials/Instances/MI_Green")))
+			{
+				FlatMesh->SetMaterial(0, Mat);
+			}
 
 			FlatActor->Tags.Add(FName("Osm2Map_Terrain"));
 

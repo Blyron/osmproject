@@ -3,6 +3,7 @@
 #include "ProceduralMeshComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/Actor.h"
+#include "Materials/MaterialInterface.h"
 
 // osm2xodr includes
 #include "osm/OsmTypes.h"
@@ -352,6 +353,13 @@ AActor* UOsm2MapRoadGenerator::GenerateRoadMesh(
 		MeshComp->CreateMeshSection(0, Vertices, Triangles, Normals, UVs, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
 	}
 
+	// Assign black material
+	if (UMaterialInterface* Mat = LoadObject<UMaterialInterface>(
+		nullptr, TEXT("/Game/Materials/Instances/MI_Black")))
+	{
+		MeshComp->SetMaterial(0, Mat);
+	}
+
 	RoadActor->Tags.Add(FName("Osm2Map_Road"));
 
 #if WITH_EDITOR
@@ -501,6 +509,13 @@ AActor* UOsm2MapRoadGenerator::GenerateJunctionMesh(
 	}
 
 	MeshComp->CreateMeshSection(0, Vertices, Triangles, MeshNormals, MeshUVs, TArray<FColor>(), TArray<FProcMeshTangent>(), true);
+
+	// Assign black material
+	if (UMaterialInterface* Mat = LoadObject<UMaterialInterface>(
+		nullptr, TEXT("/Game/Materials/Instances/MI_Black")))
+	{
+		MeshComp->SetMaterial(0, Mat);
+	}
 
 	JunctionActor->Tags.Add(FName("Osm2Map_Junction"));
 

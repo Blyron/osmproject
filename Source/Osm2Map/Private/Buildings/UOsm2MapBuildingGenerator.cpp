@@ -3,6 +3,7 @@
 #include "ProceduralMeshComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/Actor.h"
+#include "Materials/MaterialInterface.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogBuildingGen, Log, All);
 
@@ -123,6 +124,16 @@ AActor* UOsm2MapBuildingGenerator::GenerateBuilding(
 	}
 
 	BuildingActor->Tags.Add(FName("Osm2Map_Building"));
+
+	// Assign red material to all mesh sections
+	if (UMaterialInterface* Mat = LoadObject<UMaterialInterface>(
+		nullptr, TEXT("/Game/Materials/Instances/MI_Red")))
+	{
+		for (int32 s = 0; s < MeshComp->GetNumSections(); ++s)
+		{
+			MeshComp->SetMaterial(s, Mat);
+		}
+	}
 
 #if WITH_EDITOR
 	BuildingActor->SetActorLabel(FString::Printf(TEXT("Building_%s_%lld"), *Footprint.BuildingType, Footprint.OsmId));
